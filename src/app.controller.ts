@@ -1,5 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+// import { QuizModule } from './modules/quiz/quiz.module';
+// import { CreateQuizDto } from './modules/quiz/dto/CreateQuiz.dto';
+// import { QuizService } from './modules/quiz/quiz.service';
 
 @Controller() // handles most routes
 export class AppController {
@@ -15,4 +18,8 @@ export class AppController {
   getSomething(): string {
     return this.appService.getSomething();
   }
+
+  // @Post('/create')
+  // createQuiz(@Body() quizdata: CreateQuizDto): string {
+  //   return this.QuizService.createQuiz(quizdata);
 }
