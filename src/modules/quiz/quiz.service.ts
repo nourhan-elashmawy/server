@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Quiz } from './quiz.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateQuizDto } from './dto/CreateQuiz.dto';
+import { CreateQuizDto } from './dto/create-quiz.dto';
 
 @Injectable()
 export class QuizService {
