@@ -12,9 +12,10 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "migration:create": "ts-node node_modules/typeorm/cli.js migration:create ./src/database/migrations/$PNPM_CONFIG_NAME",
-    "migrate": "ts-node node_modules/typeorm/cli.js migration:run -d src/shared/utils/datasource.ts",
-    "migration:down": "ts-node node_modules/typeorm/cli.js migration:revert -d src/shared/utils/datasource.ts",
+    "migration:generate": "npx ts-node -P ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate -d ./src/shared/utils/datasource.ts ./src/database/migrations/%npm_config_name%",
+    "migration:create": "npx ts-node -P ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create ./src/database/migrations/%npm_config_name%",
+    "migration:run": "npx ts-node -P ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/shared/utils/datasource.ts",
+    "migration:revert": "npx ts-node -P ./tsconfig.json -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./src/shared/utils/datasource.ts",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -54,6 +55,7 @@
     "eslint-plugin-prettier": "^5.2.2",
     "globals": "^16.0.0",
     "jest": "^30.0.0",
+    "line-ending-corrector": "^1.0.1",
     "prettier": "^3.4.2",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
@@ -82,3 +84,4 @@
     "testEnvironment": "node"
   }
 }
+
