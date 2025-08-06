@@ -18,8 +18,8 @@ export class QuizService {
     return await this.quizRepository.find({ where: { isActive: true } });
   }
 
-  async getQuizById(id: number) {
-    return await this.quizRepository.findOne({ where: { id } });
+  async getQuizById(id: number): Promise<Quiz> {
+    return await this.quizRepository.findOneOrFail({ where: { id } });
   }
 
   async deleteQuiz(id: number) {

@@ -96,6 +96,9 @@ importers:
       jest:
         specifier: ^30.0.0
         version: 30.0.5(@types/node@22.17.0)(ts-node@10.9.2(@types/node@22.17.0)(typescript@5.9.2))
+      line-ending-corrector:
+        specifier: ^1.0.1
+        version: 1.0.1
       prettier:
         specifier: ^3.4.2
         version: 3.6.2
@@ -1631,6 +1634,11 @@ packages:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
 
+  coffeescript@2.7.0:
+    resolution: {integrity: sha512-hzWp6TUE2d/jCcN67LrW1eh5b/rSDKQK6oD6VMLlggYVUUFexgTH9z3dNYihzX4RMhze5FTUsUmOXViJKFQR/A==}
+    engines: {node: '>=6'}
+    hasBin: true
+
   collect-v8-coverage@1.0.2:
     resolution: {integrity: sha512-lHl4d5/ONEbLlJvaJNtsF/Lz+WvB07u2ycqTYbdrq7UypDXailES4valYb2eWiJFxZlVmpGekfqoxQhzyFdT4Q==}
 
@@ -2552,6 +2560,9 @@ packages:
 
   libphonenumber-js@1.12.10:
     resolution: {integrity: sha512-E91vHJD61jekHHR/RF/E83T/CMoaLXT7cwYA75T4gim4FZjnM6hbJjVIGg7chqlSqRsSvQ3izGmOjHy1SQzcGQ==}
+
+  line-ending-corrector@1.0.1:
+    resolution: {integrity: sha512-uwHj4enSztzPuHdDCysaO94S2bNk8gfR2TKIzPYz2v3sDq/7L6aUxg4uZHnbDYFIdjjxhxcA/2YE7RCqpSbY+A==}
 
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
@@ -5723,6 +5734,8 @@ snapshots:
 
   co@4.6.0: {}
 
+  coffeescript@2.7.0: {}
+
   collect-v8-coverage@1.0.2: {}
 
   color-convert@2.0.1:
@@ -6828,6 +6841,10 @@ snapshots:
       type-check: 0.4.0
 
   libphonenumber-js@1.12.10: {}
+
+  line-ending-corrector@1.0.1:
+    dependencies:
+      coffeescript: 2.7.0
 
   lines-and-columns@1.2.4: {}
 

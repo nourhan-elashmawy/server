@@ -5,16 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { QuizModule } from './modules/quiz/quiz.module';
-import { QuestionModule } from './modules/quiz/question.module';
-
 import { TypeOrmConfigService } from './config/typeorm.config.service';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({}),
+    ConfigModule.forRoot({ envFilePath: '.env.development' }),
 
     QuizModule,
-    QuestionModule,
 
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,

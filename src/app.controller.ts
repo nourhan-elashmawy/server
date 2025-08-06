@@ -6,6 +6,9 @@ import { AppService } from './app.service';
 
 @Controller() // handles most routes
 export class AppController {
+  getHello(): any {
+    throw new Error('Method not implemented.');
+  }
   // dependency injection
   constructor(private readonly appService: AppService) {}
 
