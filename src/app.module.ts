@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { QuizModule } from './modules/quiz/quiz.module';
 import { TypeOrmConfigService } from './config/typeorm.config.service';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -17,6 +18,8 @@ import { TypeOrmConfigService } from './config/typeorm.config.service';
       useClass: TypeOrmConfigService,
       imports: [ConfigModule],
     }),
+
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -9,7 +9,4 @@ export class CreateQuizDto {
     message: 'Description must be between 3 and 500 characters',
   })
   description: string;
-  // questions: Array<{
-  //   question: string;
-  // }>;
 }
