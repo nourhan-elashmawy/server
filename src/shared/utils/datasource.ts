@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 import { join } from 'path';
 import { config } from 'dotenv';
 
-config();
+config({ path: '.env.development' });
 
 export const connectionSource = new DataSource({
   type: 'postgres',
@@ -14,6 +14,6 @@ export const connectionSource = new DataSource({
   entities: [join(__dirname, '../../modules/quiz/**/*.entity{.ts,.js}')],
   migrations: [join(__dirname, '../../database/migrations/**/*{.ts,.js}')],
   migrationsTableName: process.env.DB_MIGRATION_TABLE_NAME || 'migrations',
-  migrationsRun: process.env.MIGRATIONS_RUN === 'true',
-  synchronize: process.env.DB_SYNCHRONIZE === 'true',
+  migrationsRun: true,
+  synchronize: false,
 });
