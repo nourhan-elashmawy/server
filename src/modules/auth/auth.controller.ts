@@ -17,6 +17,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('/user')
   getUser(@Request() req: { user: User }): User {
+    console.log('Controller received user:', req.user); // Debug log
     return req.user;
   }
 }
