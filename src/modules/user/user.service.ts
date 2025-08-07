@@ -9,7 +9,7 @@ export class UserService {
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
-  async createUser(userData: Partial<User>) {
+  async registerUser(userData: CreateUserDto) {
     const user = this.userRepository.create(userData);
     return await this.userRepository.save(user);
   }
@@ -20,10 +20,5 @@ export class UserService {
 
   async getAllUsers(): Promise<User[]> {
     return await this.userRepository.find();
-  }
-
-  async registerUser(userData: CreateUserDto) {
-    const user = this.userRepository.create(userData);
-    return await this.userRepository.save(user);
   }
 }
