@@ -18,7 +18,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       name: (payload as { name: string }).name,
       email: (payload as { email: string }).email,
     };
-    console.log('JWT Strategy returning:', user); // Debug log
     return user;
   }
 }

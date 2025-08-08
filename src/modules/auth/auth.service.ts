@@ -13,7 +13,6 @@ export class AuthService {
 
   async validateUserCredentials(email: string, password: string) {
     const user = await this.userService.getUserByEmail(email);
-    console.log('User from database:', user); // Add this
 
     if (!user) return null;
     const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -22,9 +21,6 @@ export class AuthService {
   }
 
   generateToken(user: User) {
-    console.log('User object when generating token:', user); // Add this
-    console.log('User email specifically:', user.email); // Add this
-
     return {
       access_token: this.jwtService.sign({
         name: user.name,
