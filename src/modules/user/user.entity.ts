@@ -1,5 +1,6 @@
 import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Role } from '../auth/enums/role.enum';
 
 @Entity('users')
 export class User {
@@ -21,8 +22,8 @@ export class User {
   @Column('timestamptz', { default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
-  @Column('varchar', { default: 'player' })
-  role: string;
+  @Column({ type: 'enum', enum: Role, default: Role.Player })
+  role: Role;
 
   @BeforeInsert()
   async setPassword() {

@@ -5,11 +5,16 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { QuizService } from '../services/quiz.service';
 import { CreateQuizDto } from '../dto/create-quiz.dto';
+import { Roles } from 'src/modules/auth/decorators/roles.decorator';
+import { RolesGuard } from 'src/modules/guards/roles.guard';
+import { Role } from 'src/modules/auth/enums/role.enum';
+import { JwtAuthGuard } from 'src/modules/guards/jwt.auth.guard';
 
 @Controller('quiz')
 export class QuizController {
@@ -21,6 +26,8 @@ export class QuizController {
   }
 
   @Post('/create')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.Admin)
   @UsePipes(ValidationPipe)
   async createQuiz(@Body() quizData: CreateQuizDto) {
     await this.quizService.createQuiz(quizData);
@@ -33,6 +40,8 @@ export class QuizController {
   }
 
   @Post('/delete/:id')
+  @UseGuards(RolesGuard)
+  @Roles(Role.Admin)
   async deleteQuiz(@Param('id') id: number) {
     return await this.quizService.deleteQuiz(id);
   }

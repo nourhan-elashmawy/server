@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
+import { Role } from '../auth/enums/role.enum';
 @Injectable()
 export class UserService {
   constructor(
@@ -23,7 +24,7 @@ export class UserService {
   }
 
   async getAdmins(): Promise<User[]> {
-    return await this.userRepository.find({ where: { role: 'admin' } });
+    return await this.userRepository.find({ where: { role: Role.Admin } });
   }
 
   async makeAdmin(userId: number): Promise<User> {
@@ -31,7 +32,7 @@ export class UserService {
     if (!user) {
       throw new Error('User not found');
     }
-    user.role = 'admin';
+    user.role = Role.Admin;
     return await this.userRepository.save(user);
   }
 }
