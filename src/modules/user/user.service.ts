@@ -21,4 +21,17 @@ export class UserService {
   async getAllUsers(): Promise<User[]> {
     return await this.userRepository.find();
   }
+
+  async getAdmins(): Promise<User[]> {
+    return await this.userRepository.find({ where: { role: 'admin' } });
+  }
+
+  async makeAdmin(userId: number): Promise<User> {
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    if (!user) {
+      throw new Error('User not found');
+    }
+    user.role = 'admin';
+    return await this.userRepository.save(user);
+  }
 }

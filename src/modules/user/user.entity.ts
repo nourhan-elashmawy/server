@@ -21,6 +21,9 @@ export class User {
   @Column('timestamptz', { default: () => 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
+  @Column('varchar', { default: 'player' })
+  role: string;
+
   @BeforeInsert()
   async setPassword() {
     if (this.password) {
