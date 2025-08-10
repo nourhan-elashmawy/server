@@ -8,6 +8,7 @@ import { QuizModule } from './modules/quiz/quiz.module';
 import { TypeOrmConfigService } from './config/typeorm.config.service';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ReferenceExistsValidator } from './shared/validators/reference-exists.validator';
 
 @Module({
   imports: [
@@ -25,6 +26,6 @@ import { AuthModule } from './modules/auth/auth.module';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ReferenceExistsValidator],
 })
 export class AppModule {}

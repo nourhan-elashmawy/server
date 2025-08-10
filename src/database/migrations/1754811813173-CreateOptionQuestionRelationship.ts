@@ -1,7 +1,6 @@
 import {
   MigrationInterface,
   QueryRunner,
-  Table,
   TableColumn,
   TableForeignKey,
 } from 'typeorm';
@@ -24,6 +23,7 @@ export class CreateOptionQuestionRelationship1754811813173
     await queryRunner.createForeignKey(
       'options',
       new TableForeignKey({
+        name: 'fk_questionId_userId',
         columnNames: ['questionId'],
         referencedTableName: 'questions',
         referencedColumnNames: ['id'],

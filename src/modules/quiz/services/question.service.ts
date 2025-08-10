@@ -14,13 +14,11 @@ export class QuestionService {
   ) {}
 
   async createQuestion(questionData: CreateQuestionDto) {
-    const quiz = await this.quizRepository.findOne({
-      where: { id: questionData.quizid },
-    });
+    // const quiz = await this.quizRepository.findOne({
+    //   where: { id: questionData.quizid },
+    // });
 
-    if (!quiz) throw new Error('Quiz not found');
-
-    return await this.questionRepository.save({ ...questionData, quiz });
+    return await this.questionRepository.save({ ...questionData });
   }
 
   async getAllQuestion() {
