@@ -11,10 +11,10 @@ import {
 } from '@nestjs/common';
 import { QuizService } from '../services/quiz.service';
 import { CreateQuizDto } from '../dto/create-quiz.dto';
-import { Roles } from 'src/modules/auth/decorators/roles.decorator';
-import { RolesGuard } from 'src/modules/guards/roles.guard';
-import { Role } from 'src/modules/auth/enums/role.enum';
-import { JwtAuthGuard } from 'src/modules/guards/jwt.auth.guard';
+import { Roles } from 'src/shared/decorators/roles.decorator';
+import { RolesGuard } from 'src/shared/guards/roles.guard';
+import { Role } from 'src/shared/constants/role.enum';
+import { JwtAuthGuard } from 'src/shared/guards/jwt.auth.guard';
 
 @Controller('quiz')
 export class QuizController {
