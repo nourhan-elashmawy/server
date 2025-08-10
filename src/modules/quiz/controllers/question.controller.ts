@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   Post,
   UsePipes,
   ValidationPipe,
@@ -21,5 +22,10 @@ export class QuestionController {
   async createQuestion(@Body() questionData: CreateQuestionDto) {
     const question = await this.questionService.createQuestion(questionData);
     return { question };
+  }
+
+  @Get('/all')
+  async getAllQuestion() {
+    return await this.questionService.getAllQuestion();
   }
 }

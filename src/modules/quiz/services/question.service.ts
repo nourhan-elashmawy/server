@@ -17,9 +17,16 @@ export class QuestionService {
     const quiz = await this.quizRepository.findOne({
       where: { id: questionData.quizid },
     });
-    if (!quiz) {
-      throw new Error('Quiz not found');
-    }
+
+    if (!quiz) throw new Error('Quiz not found');
+
     return await this.questionRepository.save({ ...questionData, quiz });
+  }
+
+  async getAllQuestion() {
+    return await this.questionRepository
+      .createQueryBuilder('qt')
+      .leftJoinAndSelect('qt.options', 'o')
+      .getMany();
   }
 }

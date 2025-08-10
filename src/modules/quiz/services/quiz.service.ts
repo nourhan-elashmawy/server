@@ -3,6 +3,11 @@ import { Repository } from 'typeorm';
 import { Quiz } from '../entities/quiz.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateQuizDto } from '../dto/create-quiz.dto';
+import {
+  IPaginationOptions,
+  Pagination,
+  paginate,
+} from 'nestjs-typeorm-paginate';
 
 @Injectable()
 export class QuizService {
@@ -14,7 +19,22 @@ export class QuizService {
     return await this.quizRepository.save(quiz);
   }
 
-  async getAllQuiz() {
+  // async getAllQuiz() {
+  //   return await this.quizRepository
+  //     .createQueryBuilder('q')
+  //     .leftJoinAndSelect('q.questions', 'qt')
+  //     .getMany();
+  // }
+
+  async paginate(options: IPaginationOptions): Promise<Pagination<Quiz>> {
+    const qb = this.quizRepository
+      .createQueryBuilder('q')
+      .orderBy('q.id', 'ASC');
+
+    return paginate<Quiz>(qb, options);
+  }
+
+  async getActiveQuiz() {
     return await this.quizRepository.find({ where: { isActive: true } });
   }
 
