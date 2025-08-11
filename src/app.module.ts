@@ -1,4 +1,9 @@
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -9,6 +14,7 @@ import { TypeOrmConfigService } from './config/typeorm.config.service';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ReferenceExistsValidator } from './shared/validators/reference-exists.validator';
+import { ApiTokenCheckMiddleware } from './shared/middleware/api-token-check.middleware';
 
 @Module({
   imports: [
@@ -28,4 +34,10 @@ import { ReferenceExistsValidator } from './shared/validators/reference-exists.v
   controllers: [AppController],
   providers: [AppService, ReferenceExistsValidator],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(ApiTokenCheckMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}
