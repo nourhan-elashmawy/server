@@ -1,23 +1,35 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { AppService } from './app.service';
-// import { QuizModule } from './modules/quiz/quiz.module';
-// import { CreateQuizDto } from './modules/quiz/dto/CreateQuiz.dto';
-// import { QuizService } from './modules/quiz/quiz.service';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
 
-@Controller() // handles most routes
+@Controller()
 export class AppController {
-  getHello(): any {
-    throw new Error('Method not implemented.');
-  }
-  // dependency injection
   constructor(private readonly appService: AppService) {}
 
-  @Get('/something')
-  getSomething(): string {
-    return this.appService.getSomething();
+  @Post('/file')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './files',
+        filename: (req, file, callback) => {
+          const uniqueSuffix =
+            Date.now() + '-' + Math.round(Math.random() * 1e9);
+          const ext = extname(file.originalname);
+          const filename = `${file.originalname}-${uniqueSuffix}-${ext}`;
+          callback(null, filename);
+        },
+      }),
+    }),
+  )
+  handleUpload(@UploadedFile() file: Express.Multer.File) {
+    console.log('file', file);
+    return 'file upload API';
   }
-
-  // @Post('/create')
-  // createQuiz(@Body() quizdata: CreateQuizDto): string {
-  //   return this.QuizService.createQuiz(quizdata);
 }

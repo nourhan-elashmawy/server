@@ -16,6 +16,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ReferenceExistsValidator } from './shared/validators/reference-exists.validator';
 import { ApiTokenCheckMiddleware } from './shared/middleware/api-token-check.middleware';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -25,6 +26,8 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
       useClass: TypeOrmConfigService,
       imports: [ConfigModule],
     }),
+
+    MulterModule.register({ dest: './uploads' }),
 
     EventEmitterModule.forRoot(),
 
