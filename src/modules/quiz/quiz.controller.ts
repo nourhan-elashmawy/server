@@ -12,13 +12,13 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { QuizService } from './services/quiz.service';
-import { CreateQuizDto } from '../dto/create-quiz.dto';
+import { CreateQuizDto } from './create-quiz.dto';
 import { Roles } from 'src/shared/decorators/roles.decorator';
 import { RolesGuard } from 'src/shared/guards/roles.guard';
 import { Role } from 'src/shared/constants/role.enum';
 import { JwtAuthGuard } from 'src/shared/guards/jwt.auth.guard';
 import { IPaginationOptions, Pagination } from 'nestjs-typeorm-paginate';
-import { Quiz } from '../entities/quiz.entity';
+import { Quiz } from './quiz.entity';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 
 @Controller('quiz')
