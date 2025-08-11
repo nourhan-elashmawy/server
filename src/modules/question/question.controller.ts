@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { CreateQuestionDto } from './create-question.dto';
 import { QuestionService } from './question.service';
-import { QuizService } from '../services/quiz.service';
+import { QuizService } from '../quiz/quiz.service';
 
 @Controller('quiz/question')
 export class QuestionController {

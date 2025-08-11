@@ -15,17 +15,20 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ReferenceExistsValidator } from './shared/validators/reference-exists.validator';
 import { ApiTokenCheckMiddleware } from './shared/middleware/api-token-check.middleware';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env.development', isGlobal: true }),
 
-    QuizModule,
-
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
       imports: [ConfigModule],
     }),
+
+    EventEmitterModule.forRoot(),
+
+    QuizModule,
 
     UserModule,
 
