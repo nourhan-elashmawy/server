@@ -5,9 +5,9 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { OptionService } from 'src/modules/option/option.service';
-import { QuestionService } from 'src/modules/question/question.service';
-import { CreateOptionDto } from 'src/modules/option/create-option.dto';
+import { OptionService } from './option.service';
+import { QuestionService } from '../question/question.service';
+import { CreateOptionDto } from './create-option.dto';
 
 @Controller('question/option')
 export class OptionController {

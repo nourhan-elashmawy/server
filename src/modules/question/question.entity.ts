@@ -5,8 +5,8 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Quiz } from '../quiz.entity';
-import { Option } from '../../option/option.entity';
+import { Quiz } from '../quiz/quiz.entity';
+import { Option } from '../option/option.entity';
 
 @Entity('questions')
 export class Question {

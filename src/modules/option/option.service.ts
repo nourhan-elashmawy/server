@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Option } from '../../option/option.entity';
-import { CreateOptionDto } from 'src/modules/option/create-option.dto';
+import { Option } from './option.entity';
+import { CreateOptionDto } from './create-option.dto';
 import { Question } from '../question/question.entity';
 
 @Injectable()

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { Quiz } from '../quiz.entity';
+import { Quiz } from '../quiz/quiz.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateQuizDto } from '../create-quiz.dto';
+import { CreateQuizDto } from '../quiz/create-quiz.dto';
 import {
   IPaginationOptions,
   Pagination,
