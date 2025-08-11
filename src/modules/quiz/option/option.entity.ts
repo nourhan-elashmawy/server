@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
-import { Question } from './question.entity';
+import { Question } from '../question/question.entity';
 
 @Entity('options')
 @Unique(['text', 'question'])

@@ -11,7 +11,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { QuizService } from '../services/quiz.service';
+import { QuizService } from './services/quiz.service';
 import { CreateQuizDto } from '../dto/create-quiz.dto';
 import { Roles } from 'src/shared/decorators/roles.decorator';
 import { RolesGuard } from 'src/shared/guards/roles.guard';
